@@ -167,7 +167,40 @@
 				]),
 			]);
 			new PatchContainer([
-				new Patcher("amdaemon.exe", "91f83d14 (9,695,232 Bytes)", [
+				new Patcher("amdaemon.exe", "91f83d14", [
+					{
+						name: "Allow 127.0.0.1/localhost as the network server",
+						patches: [
+							{ offset: 0x733314, off: [0x31, 0x32, 0x37, 0x2f], on: [0x30, 0x2f, 0x38, 0x00] },
+							{ offset: 0x3F6D24, off: [0xff, 0x15, 0xfe, 0xb7, 0x1b, 0x00, 0x8b], on: [0x33, 0xc0, 0x48, 0x83, 0xc4, 0x28, 0xc3] }
+						]
+					},
+					{
+						name: "Credit freeze",
+						tooltip: "Prevents credits from being used. At least one credit must be available to start the game or purchase premium tickets.",
+						patches: [
+							{ offset: 0x2DE4F8, off: [0x28], on: [0x08] }
+						]
+					},
+                    {
+                        name: "Replace error 6401 with no error",
+                        tooltip: "Sets all instances of error 6401 to 0",
+                        patches: [
+                            { offset: 0x24DC08, off: [0x01, 0x19], on: [0x00, 0x00] },
+                            { offset: 0x250D4C, off: [0x01, 0x19], on: [0x00, 0x00] },
+                            { offset: 0x250FB0, off: [0x01, 0x19], on: [0x00, 0x00] },
+                            { offset: 0x251F1F, off: [0x01, 0x19], on: [0x00, 0x00] },
+                            { offset: 0x252120, off: [0x01, 0x19], on: [0x00, 0x00] },
+                        ],
+                    },
+                    {
+                        name: "Enable internal debugging console output",
+                        patches: [
+                            { offset: 0x2A95, off: [0x0F, 0x84, 0xA9, 0x00, 0x00, 0x00], on: [0x90, 0x90, 0x90, 0x90, 0x90, 0x90] }
+                        ],
+                    },
+				]),
+				new Patcher("amdaemon.exe", "91f83d14 (stripped)", [
 					{
 						name: "Allow 127.0.0.1/localhost as the network server",
 						patches: [
@@ -235,5 +268,6 @@
 		<b>Additional Patcher By tangent 90°</b>
 	</center>
 </body>
+
 
 </html>
