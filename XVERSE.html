@@ -158,6 +158,12 @@
                         ]
                     },
 					{
+                        name: "Remove the pop-up prompt for low air",
+                        patches: [
+                            { offset: 0x6ED2EC, off: [0x75], on: [0xEB] },
+                        ]
+                    },
+					{
 						name: "Set all timers to 999",
 						danger: "[DEPRECATED] Breaks online matching functionality",
 						patches: [
@@ -271,3 +277,4 @@
 
 
 </html>
+
