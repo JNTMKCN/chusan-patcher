@@ -131,6 +131,13 @@
 						]
 					},
 					{
+						name: "Set all timers to 999",
+						danger: "[DEPRECATED] Breaks online matching functionality",
+						patches: [
+							{ offset: 0x8462B0, off: [0x69, 0x44, 0x24, 0x04, 0xe8, 0x03, 0x00, 0x00], on: [0xb8, 0x58, 0x3e, 0x0f, 0x00, 0x90, 0x90, 0x90] }
+						]
+					},
+					{
 						name: "Enable internal debugging information output",
 						patches: [
 							{ offset: 0x21A196, off: [0x00], on: [0x01] }
@@ -163,13 +170,6 @@
                             { offset: 0x6ED2EC, off: [0x75], on: [0xEB] },
                         ]
                     },
-					{
-						name: "Set all timers to 999",
-						danger: "[DEPRECATED] Breaks online matching functionality",
-						patches: [
-							{ offset: 0x8462B0, off: [0x69, 0x44, 0x24, 0x04, 0xe8, 0x03, 0x00, 0x00], on: [0xb8, 0x58, 0x3e, 0x0f, 0x00, 0x90, 0x90, 0x90] }
-						]
-					},
 				]),
 			]);
 			new PatchContainer([
@@ -277,5 +277,6 @@
 
 
 </html>
+
 
 
